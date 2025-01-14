@@ -21,6 +21,7 @@ function App() {
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const [isDonationModalOpen, setIsDonationModalOpen] = useState(false);
   const [user, setUser] = useState<any>(null);
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
@@ -92,44 +93,54 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-8 px-4 sm:py-12 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        <div className="flex justify-between items-center mb-12">
-          <img src="./made_in_india.png" alt="made in india logo"  width={200} height={200}/>
-          <h1 className="text-4xl font-bold text-gray-900 dark:text-white flex items-center gap-3">
-            <Calculator className="h-10 w-10 text-blue-600" />
+        <div className="flex flex-col sm:flex-row justify-between items-center mb-8 sm:mb-12 gap-4">
+          <img 
+            src="./made_in_india.png" 
+            alt="made in india logo"  
+            className="w-32 sm:w-40 lg:w-48 h-auto"
+          />
+          <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white flex items-center gap-3">
+            <Calculator className="h-8 w-8 sm:h-10 sm:w-10 text-blue-600" />
             SIP Calculator
           </h1>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 sm:gap-4">
             <button
               onClick={() => setIsDonationModalOpen(true)}
-              className="flex items-center gap-2 px-4 py-2 bg-pink-600 text-white rounded-lg hover:bg-pink-700 transition-colors"
+              className="flex items-center gap-1 sm:gap-2 px-3 sm:px-4 py-2 text-sm sm:text-base bg-pink-600 text-white rounded-lg hover:bg-pink-700 transition-colors"
             >
-              <Heart size={20} />
+              <Heart size={16} className="sm:w-5 sm:h-5" />
               Donate
             </button>
             {user ? (
               <button
                 onClick={handleSignOut}
-                className="flex items-center gap-2 px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors"
+                className="flex items-center gap-1 sm:gap-2 px-3 sm:px-4 py-2 text-sm sm:text-base bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors"
               >
                 Sign Out
               </button>
             ) : (
               <button
                 onClick={() => setIsAuthModalOpen(true)}
-                className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                className="flex items-center gap-1 sm:gap-2 px-3 sm:px-4 py-2 text-sm sm:text-base bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
               >
-                <LogIn size={20} />
+                <LogIn size={16} className="sm:w-5 sm:h-5" />
                 Login
               </button>
             )}
+            <button
+              onClick={() => setIsDarkMode(!isDarkMode)}
+              className="flex items-center gap-2 px-3 sm:px-4 py-2 text-sm sm:text-base bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+            >
+              {isDarkMode ? '🌞' : '🌙'}
+            </button>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-8">
           {/* Input Section */}
-          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6">
+          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-4 sm:p-6">
             <div className="space-y-6">
               <div>
                 <label className="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
@@ -200,18 +211,22 @@ function App() {
           </div>
 
           {/* Results Section */}
-          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6">
-            <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-6">Investment Summary</h2>
+          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-4 sm:p-6">
+            <h2 className="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-white mb-4 sm:mb-6">
+              Investment Summary
+            </h2>
             
-            <div className="space-y-6">
-              <div className="text-center p-6 bg-blue-50 dark:bg-blue-900/50 rounded-lg">
-                <p className="text-lg text-gray-600 dark:text-gray-300 mb-2">Total Value after {years} years</p>
-                <p className="text-4xl font-bold text-blue-600 dark:text-blue-400">
+            <div className="space-y-4 sm:space-y-6">
+              <div className="text-center p-4 sm:p-6 bg-blue-50 dark:bg-blue-900/50 rounded-lg">
+                <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 mb-2">
+                  Total Value after {years} years
+                </p>
+                <p className="text-2xl sm:text-4xl font-bold text-blue-600 dark:text-blue-400">
                   {formatCurrency(latestValues.totalValue)}
                 </p>
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
                   <p className="text-sm text-gray-600 dark:text-gray-300 mb-1">Total Investment</p>
                   <p className="text-xl font-semibold text-gray-900 dark:text-gray-100">
@@ -226,10 +241,12 @@ function App() {
                 </div>
               </div>
 
-              <div className="mt-6">
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Year-by-Year Breakdown</h3>
-                <div className="max-h-64 overflow-y-auto">
-                  <table className="min-w-full">
+              <div className="mt-4 sm:mt-6">
+                <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-3 sm:mb-4">
+                  Year-by-Year Breakdown
+                </h3>
+                <div className="max-h-48 sm:max-h-64 overflow-y-auto">
+                  <table className="min-w-full text-sm sm:text-base">
                     <thead className="bg-gray-50 dark:bg-gray-700">
                       <tr>
                         <th className="px-4 py-2 text-left text-sm font-medium text-gray-500 dark:text-gray-300">Year</th>
