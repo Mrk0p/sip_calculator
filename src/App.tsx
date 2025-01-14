@@ -116,8 +116,8 @@ function App() {
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col sm:flex-row justify-between items-center mb-8 sm:mb-12 gap-4">
           <img 
-            src="./made_in_india.png" 
-            alt="made in india logo"  
+            src="./bazaar_update_logo.png" 
+            alt="Bazaar Update logo"  
             className="w-32 sm:w-40 lg:w-48 h-auto"
           />
           <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white flex items-center gap-3">
