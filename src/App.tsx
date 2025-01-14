@@ -92,11 +92,11 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="flex justify-between items-center mb-12">
           <img src="./made_in_india.png" alt="made in india logo"  width={200} height={200}/>
-          <h1 className="text-4xl font-bold text-gray-900 flex items-center gap-3">
+          <h1 className="text-4xl font-bold text-gray-900 dark:text-white flex items-center gap-3">
             <Calculator className="h-10 w-10 text-blue-600" />
             SIP Calculator
           </h1>
@@ -129,10 +129,10 @@ function App() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Input Section */}
-          <div className="bg-white rounded-xl shadow-lg p-6">
+          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6">
             <div className="space-y-6">
               <div>
-                <label className="flex items-center gap-2 text-sm font-medium text-gray-700 mb-2">
+                <label className="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   <IndianRupee className="h-4 w-4" />
                   Monthly Investment
                 </label>
@@ -140,12 +140,12 @@ function App() {
                   type="number"
                   value={monthlyInvestment || ''}
                   onChange={handleMonthlyInvestmentChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 />
               </div>
 
               <div>
-                <label className="flex items-center gap-2 text-sm font-medium text-gray-700 mb-2">
+                <label className="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   <Clock className="h-4 w-4" />
                   Investment Period (Years)
                 </label>
@@ -155,7 +155,7 @@ function App() {
                   max="30"
                   value={years}
                   onChange={(e) => setYears(Number(e.target.value))}
-                  className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
+                  className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer"
                 />
                 <div className="flex justify-between text-sm text-gray-600">
                   <span>1 Year</span>
@@ -165,7 +165,7 @@ function App() {
               </div>
 
               <div>
-                <label className="flex items-center gap-2 text-sm font-medium text-gray-700 mb-2">
+                <label className="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   <TrendingUp className="h-4 w-4" />
                   Expected Annual Return (%)
                 </label>
@@ -175,7 +175,7 @@ function App() {
                   max="50"
                   value={returnRate}
                   onChange={(e) => setReturnRate(Number(e.target.value))}
-                  className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
+                  className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer"
                 />
                 <div className="flex justify-between text-sm text-gray-600">
                   <span>1%</span>
@@ -185,7 +185,7 @@ function App() {
               </div>
 
               <div>
-                <label className="flex items-center gap-2 text-sm font-medium text-gray-700 mb-2">
+                <label className="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   <Wallet className="h-4 w-4" />
                   Starting Balance (Optional)
                 </label>
@@ -193,58 +193,58 @@ function App() {
                   type="number"
                   value={startingBalance || ''}
                   onChange={(e) => setStartingBalance(Math.max(0, Number(e.target.value)))}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 />
               </div>
             </div>
           </div>
 
           {/* Results Section */}
-          <div className="bg-white rounded-xl shadow-lg p-6">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-6">Investment Summary</h2>
+          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6">
+            <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-6">Investment Summary</h2>
             
             <div className="space-y-6">
-              <div className="text-center p-6 bg-blue-50 rounded-lg">
-                <p className="text-lg text-gray-600 mb-2">Total Value after {years} years</p>
-                <p className="text-4xl font-bold text-blue-600">
+              <div className="text-center p-6 bg-blue-50 dark:bg-blue-900/50 rounded-lg">
+                <p className="text-lg text-gray-600 dark:text-gray-300 mb-2">Total Value after {years} years</p>
+                <p className="text-4xl font-bold text-blue-600 dark:text-blue-400">
                   {formatCurrency(latestValues.totalValue)}
                 </p>
               </div>
 
               <div className="grid grid-cols-2 gap-4">
-                <div className="p-4 bg-gray-50 rounded-lg">
-                  <p className="text-sm text-gray-600 mb-1">Total Investment</p>
-                  <p className="text-xl font-semibold text-gray-900">
+                <div className="p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                  <p className="text-sm text-gray-600 dark:text-gray-300 mb-1">Total Investment</p>
+                  <p className="text-xl font-semibold text-gray-900 dark:text-gray-100">
                     {formatCurrency(latestValues.invested)}
                   </p>
                 </div>
-                <div className="p-4 bg-gray-50 rounded-lg">
-                  <p className="text-sm text-gray-600 mb-1">Total Returns</p>
-                  <p className="text-xl font-semibold text-gray-900">
+                <div className="p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                  <p className="text-sm text-gray-600 dark:text-gray-300 mb-1">Total Returns</p>
+                  <p className="text-xl font-semibold text-gray-900 dark:text-gray-100">
                     {formatCurrency(latestValues.returns)}
                   </p>
                 </div>
               </div>
 
               <div className="mt-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">Year-by-Year Breakdown</h3>
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Year-by-Year Breakdown</h3>
                 <div className="max-h-64 overflow-y-auto">
                   <table className="min-w-full">
-                    <thead className="bg-gray-50">
+                    <thead className="bg-gray-50 dark:bg-gray-700">
                       <tr>
-                        <th className="px-4 py-2 text-left text-sm font-medium text-gray-500">Year</th>
-                        <th className="px-4 py-2 text-right text-sm font-medium text-gray-500">Invested</th>
-                        <th className="px-4 py-2 text-right text-sm font-medium text-gray-500">Returns</th>
-                        <th className="px-4 py-2 text-right text-sm font-medium text-gray-500">Value</th>
+                        <th className="px-4 py-2 text-left text-sm font-medium text-gray-500 dark:text-gray-300">Year</th>
+                        <th className="px-4 py-2 text-right text-sm font-medium text-gray-500 dark:text-gray-300">Invested</th>
+                        <th className="px-4 py-2 text-right text-sm font-medium text-gray-500 dark:text-gray-300">Returns</th>
+                        <th className="px-4 py-2 text-right text-sm font-medium text-gray-500 dark:text-gray-300">Value</th>
                       </tr>
                     </thead>
-                    <tbody className="divide-y divide-gray-200">
+                    <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
                       {breakdown.map((year) => (
                         <tr key={year.year}>
-                          <td className="px-4 py-2 text-sm text-gray-900">{year.year}</td>
-                          <td className="px-4 py-2 text-sm text-gray-900 text-right">{formatCurrency(year.invested)}</td>
-                          <td className="px-4 py-2 text-sm text-gray-900 text-right">{formatCurrency(year.returns)}</td>
-                          <td className="px-4 py-2 text-sm text-gray-900 text-right">{formatCurrency(year.totalValue)}</td>
+                          <td className="px-4 py-2 text-sm text-gray-900 dark:text-gray-100">{year.year}</td>
+                          <td className="px-4 py-2 text-sm text-gray-900 dark:text-gray-100 text-right">{formatCurrency(year.invested)}</td>
+                          <td className="px-4 py-2 text-sm text-gray-900 dark:text-gray-100 text-right">{formatCurrency(year.returns)}</td>
+                          <td className="px-4 py-2 text-sm text-gray-900 dark:text-gray-100 text-right">{formatCurrency(year.totalValue)}</td>
                         </tr>
                       ))}
                     </tbody>
