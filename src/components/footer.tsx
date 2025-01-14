@@ -6,7 +6,7 @@ function Footer() {
     <footer className="mt-8 sm:mt-12 text-center px-4">
       <div className="flex flex-col items-center justify-center gap-3 sm:gap-4">
         <img 
-          src="./made_in_india.png" 
+          src="./bazaarupdate_logo.png" 
           alt="made in india logo" 
           className="w-20 sm:w-24 h-auto"
         />
