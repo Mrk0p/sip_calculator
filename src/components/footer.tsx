@@ -11,7 +11,7 @@ function Footer() {
           className="w-20 sm:w-24 h-auto"
         />
         <a 
-          href="https://www.instagram.com/bazaar_update/" 
+          href="https://www.instagram.com/bazaar.updates?igsh=MXBnamIwbzY0dTI3"
           target="_blank" 
           rel="noopener noreferrer" 
           className="flex items-center gap-2 text-sm sm:text-base text-gray-600 dark:text-gray-300 hover:text-pink-600 dark:hover:text-pink-400 transition-colors"
